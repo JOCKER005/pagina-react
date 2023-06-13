@@ -2,6 +2,7 @@ import Bottom from "./Bottom";
 import Title from "./Title";
 import { useHistory } from "react-router-dom";
 import Fav from './Fav.js'
+import { useState } from "react";
 
 
 function Nave() {
@@ -15,7 +16,10 @@ function Nave() {
         history.push('/result?search='+ input)
       }
     }
-
+    const [menu, setMenu ] = useState(false)
+    const toggleMenu = () => {
+        setMenu(!menu)
+    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +29,8 @@ function Nave() {
             className= "navbar-brand"
             />
             <button
-              className="navbar-toggler"
+            onClick={toggleMenu}
+              className={`navbar-toggler ${ menu ? "collapsed" : ""}`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -35,7 +40,7 @@ function Nave() {
             >
               <span className="navbar-toggler-icon" />
             </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className={`collapse navbar-collapse ${menu ? "show": ""}`} id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Title 

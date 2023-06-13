@@ -20,11 +20,12 @@ class Home extends Component {
   render() {
     return(
         <>
+        <div className="container-fluid">
         <div class="row" id="popularMovies">
           {
           this.state.movies.results?.map( movie => {
             return (
-              <div className="display-flex col-12 col-sm-6 col-lg-3 my-2">
+              <div className=" display-flex col-12 col-sm-3 col-lg-3 my-4  " >
 			          <div className="card h-100">
                   <Card movie={ movie} key={movie.id} />
                 </div>
@@ -32,6 +33,7 @@ class Home extends Component {
             )
           })
           }
+        </div>
         </div>
         </>
     )
